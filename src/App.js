@@ -1,25 +1,31 @@
 import React from "react";
 import "./App.css";
 import useWebAnimations from '@wellyshen/use-web-animations';
+import Sun from "./Components/Sun";
+import Moon from "./Components/Moon";
+import Scenery from "./Components/Scenery";
 
 function App() {
   const {ref} = useWebAnimations({
-    keyframes:{transform:"translateY(500px)"},
+    keyframes:{
+      background:["#c9ebff","#87ceeb","#f1cc51","#053752","#001A26"]
+    },
     timing:{
-      duration:5000,
+      duration:10000,
       direction:"alternate",
-      iterations:"Infinity"
+      iterations:"Infinity",
+      easing:"ease-in-out"
     }
   })
 
-
   return (
-    <div className="sky">
-      <div className="scenerys">
-        <img src="./images/scenery.png" className="scenery" />
-      </div>
-      <div className="moon" ref={ref}></div>
-      <div className="sun" ref={ref}></div>
+    <div className="sky" ref={ref}>
+    <h1 className="day">Day</h1>
+    <h1 className="and">&</h1>
+    <h1 className="night">Night</h1>
+      <Sun />
+      <Moon />
+      <Scenery />
     </div>
   );
 }
