@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import useWebAnimations from '@wellyshen/use-web-animations';
 
 function App() {
+  const {ref} = useWebAnimations({
+    keyframes:{transform:"translateY(500px)"},
+    timing:{
+      duration:5000,
+      direction:"alternate",
+      iterations:"Infinity"
+    }
+  })
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="sky">
+      <div className="scenerys">
+        <img src="./images/scenery.png" className="scenery" />
+      </div>
+      <div className="moon" ref={ref}></div>
+      <div className="sun" ref={ref}></div>
     </div>
   );
 }
